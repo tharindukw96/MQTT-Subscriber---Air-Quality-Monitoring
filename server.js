@@ -12,7 +12,9 @@ var db = firebase.firestore();
 
 //MQTT broker connection
 var mqtt = require('mqtt');
-var client = mqtt.connect('mqtt://broker.mqttdashboard.com:1883')
+var options = { port : process.env.PORT};
+
+var client = mqtt.connect('mqtt://broker.mqttdashboard.com:1883', options)
 client.on('connect', function () {
     client.subscribe('test_topic_1');
 });
